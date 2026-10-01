@@ -1,11 +1,13 @@
 import Navbar from "@/app/components/Navbar";
 import Hero from "@/app/components/Hero";
-import About from "@/app/components/About";
+import QuickScan from "@/app/components/QuickScan";
+import ImpactWall from "@/app/components/ImpactWall";
+import FeaturedCaseStudies from "@/app/components/FeaturedCaseStudies";
 import Experience from "@/app/components/Experience";
-import FeaturedBuilds from "@/app/components/FeaturedBuilds";
-import Experiments from "@/app/components/Experiments";
-import Skills from "@/app/components/Skills";
-import Blog from "@/app/components/Blog";
+import Builds from "@/app/components/Builds";
+import HowIThink from "@/app/components/HowIThink";
+import NowSection from "@/app/components/NowSection";
+import About from "@/app/components/About";
 import Contact from "@/app/components/Contact";
 import Footer from "@/app/components/Footer";
 
@@ -15,12 +17,14 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <About />
+        <QuickScan />
+        <ImpactWall />
+        <FeaturedCaseStudies />
         <Experience />
-        <FeaturedBuilds />
-        <Experiments />
-        <Skills />
-        <Blog />
+        <Builds />
+        <HowIThink />
+        <NowSection />
+        <About />
         <Contact />
       </main>
       <Footer />

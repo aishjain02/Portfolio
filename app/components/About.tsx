@@ -2,108 +2,104 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { User, MapPin, GraduationCap } from "lucide-react";
-import { about } from "@/app/data/content";
+import { about, achievements, mindChanges, skills } from "@/app/data/content";
 
 export default function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6" ref={ref}>
-        {/* Section Header */}
+    <section id="about" className="py-24 bg-white" ref={ref}>
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="mb-16"
         >
-          <span className="inline-block px-4 py-1.5 bg-coral-50 text-coral text-sm font-semibold rounded-full mb-4">
-            About Me
-          </span>
+          <p className="section-label mb-3">About</p>
           <h2 className="font-display font-bold text-4xl sm:text-5xl text-ink">
-            The story so far
+            {about.positioning}
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
-          {/* Left — Photo */}
+        <div className="grid lg:grid-cols-[1fr_360px] gap-16">
+          {/* Left — Bio */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-2 flex flex-col items-center lg:items-start gap-6"
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {/* Profile Photo Placeholder */}
-            <div className="relative">
-              <div className="w-52 h-52 rounded-3xl bg-coral-50 border-4 border-coral-100 flex items-center justify-center overflow-hidden shadow-lg">
-                <div className="flex flex-col items-center gap-2 text-coral-300">
-                  <User size={64} strokeWidth={1} />
-                  <span className="text-xs text-ink-300 font-medium">
-                    Add your photo
-                  </span>
-                </div>
-              </div>
-              {/* Decorative blob */}
-              <div className="absolute -bottom-3 -right-3 w-24 h-24 rounded-2xl bg-gold opacity-20 -z-10" />
-              <div className="absolute -top-3 -left-3 w-16 h-16 rounded-xl bg-coral opacity-15 -z-10" />
-            </div>
-
-            {/* Location + Education */}
-            <div className="flex flex-col gap-3 w-full max-w-xs">
-              <div className="flex items-center gap-2 text-ink-400 text-sm">
-                <MapPin size={15} className="text-coral flex-shrink-0" />
-                <span>Bengaluru, Karnataka, India</span>
-              </div>
-              <div className="flex items-start gap-2 text-ink-400 text-sm">
-                <GraduationCap size={15} className="text-coral flex-shrink-0 mt-0.5" />
-                <span>{about.education}</span>
-              </div>
-            </div>
-
-            {/* Open To Badge */}
-            <div className="flex items-center gap-2 px-4 py-2.5 bg-coral-50 rounded-xl border border-coral-100">
-              <div className="w-2 h-2 rounded-full bg-coral animate-pulse" />
-              <span className="text-sm font-semibold text-coral">{about.openTo}</span>
-            </div>
-          </motion.div>
-
-          {/* Right — Bio + Badges */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-3 flex flex-col gap-8"
-          >
-            {/* Bio */}
-            <div className="space-y-4">
-              {about.bio.split("\n\n").map((para, i) => (
-                <p key={i} className="text-ink-500 text-lg leading-relaxed">
-                  {para}
-                </p>
+            <div className="space-y-5 mb-12">
+              {about.bio.map((para, i) => (
+                <p key={i} className="text-ink-600 text-lg leading-[1.85]">{para}</p>
               ))}
             </div>
 
-            {/* Highlight Badges */}
+            <p className="text-ink-400 text-sm">{about.education}</p>
+
+            {/* Skills */}
+            <div className="mt-12">
+              <p className="section-label mb-6">Skills & Tools</p>
+              <div className="space-y-6">
+                {skills.map((group) => (
+                  <div key={group.category}>
+                    <p className="text-xs font-bold text-ink-400 uppercase tracking-wider mb-3">
+                      {group.icon} {group.category}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className="px-3 py-1 bg-ink-50 text-ink-600 text-xs font-medium rounded-lg border border-ink-200"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right — Achievements + Mind Changes */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="space-y-10"
+          >
+            {/* Achievements */}
             <div>
-              <h3 className="font-display font-semibold text-ink text-sm uppercase tracking-wider mb-4">
-                Highlights
-              </h3>
-              <div className="flex flex-col gap-3">
-                {about.badges.map((badge, i) => (
-                  <motion.div
+              <p className="section-label mb-5">Highlights</p>
+              <div className="space-y-3">
+                {achievements.map((a, i) => (
+                  <div
                     key={i}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-                    className="flex items-center gap-3 px-5 py-4 bg-cream rounded-2xl border border-cream-200 hover:border-coral-200 hover:bg-coral-50 transition-all group"
+                    className="flex gap-3 p-4 border border-ink-200 rounded-xl hover:border-blue hover:-translate-y-0.5 transition-all"
                   >
-                    <span className="text-2xl">{badge.emoji}</span>
-                    <span className="text-ink-500 font-medium group-hover:text-ink transition-colors">
-                      {badge.text}
-                    </span>
-                  </motion.div>
+                    <span className="text-xl flex-shrink-0">{a.icon}</span>
+                    <div>
+                      <p className="font-semibold text-ink text-sm">{a.title}</p>
+                      <p className="text-ink-400 text-xs mt-0.5">{a.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mind Changes */}
+            <div>
+              <p className="section-label mb-5">Things I've changed my mind about</p>
+              <div className="space-y-4">
+                {mindChanges.map((m, i) => (
+                  <div key={i} className="border-l-2 border-ink-200 pl-4">
+                    <p className="font-display font-bold text-ink text-sm mb-1">
+                      &ldquo;{m.quote}&rdquo;
+                    </p>
+                    <p className="text-ink-400 text-xs leading-relaxed">{m.context}</p>
+                  </div>
                 ))}
               </div>
             </div>

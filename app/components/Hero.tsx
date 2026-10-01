@@ -1,204 +1,107 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowDown, Download, Mail } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowDown, Download } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/app/components/icons";
 import { hero } from "@/app/data/content";
 
-function AnimatedCounter({ target, suffix = "" }: { target: string; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [counted, setCounted] = useState(false);
-  const [display, setDisplay] = useState("0");
-
-  const numericPart = target.replace(/[^0-9.]/g, "");
-  const prefix = target.match(/^[^0-9]*/)?.[0] ?? "";
-  const targetSuffix = target.match(/[^0-9.]+$/)?.[0] ?? "";
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !counted) {
-          setCounted(true);
-          const end = parseFloat(numericPart);
-          const duration = 1800;
-          const startTime = Date.now();
-          const timer = setInterval(() => {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const current = Math.round(eased * end);
-            setDisplay(String(current));
-            if (progress >= 1) clearInterval(timer);
-          }, 16);
-        }
-      },
-      { threshold: 0.5 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [counted, numericPart]);
-
-  return (
-    <span ref={ref}>
-      {prefix}
-      {display}
-      {targetSuffix}
-      {suffix}
-    </span>
-  );
-}
-
 export default function Hero() {
-  const [tagIndex, setTagIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTagIndex((i) => (i + 1) % hero.taglines.length);
-    }, 2200);
-    return () => clearInterval(timer);
-  }, []);
-
-  const scrollToWork = () => {
-    document.querySelector("#experience")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollTo = (id: string) =>
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-cream px-6 pt-20">
-      {/* Animated Background Blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="blob absolute -top-32 -right-32 w-96 h-96 rounded-full bg-coral opacity-[0.12] blur-3xl" />
-        <div className="blob-delay absolute top-1/2 -left-48 w-80 h-80 rounded-full bg-gold opacity-[0.10] blur-3xl" />
-        <div className="blob absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-coral opacity-[0.08] blur-2xl" />
-      </div>
+    <section className="relative min-h-screen flex flex-col justify-center bg-white px-6 pt-20 overflow-hidden">
+      {/* Subtle background grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, #E2E8F0 1px, transparent 0)",
+          backgroundSize: "40px 40px",
+          opacity: 0.5,
+        }}
+      />
+      {/* Blue glow */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        {/* Greeting */}
+      <div className="relative max-w-6xl mx-auto w-full py-20">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="mb-6"
         >
-          <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl text-ink leading-tight tracking-tight mb-4">
-            {hero.greeting}
-          </h1>
+          <span className="section-label">Product Builder · Bengaluru</span>
         </motion.div>
 
-        {/* Rotating Tagline */}
-        <motion.div
+        <motion.h1
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-ink leading-[1.05] tracking-tight max-w-4xl mb-8"
+        >
+          {hero.headline}
+        </motion.h1>
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-          className="h-10 sm:h-12 flex items-center justify-center mb-6"
+          className="text-ink-500 text-lg sm:text-xl max-w-2xl mb-2 leading-relaxed"
         >
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-coral animate-pulse" />
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={tagIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="font-display font-bold text-xl sm:text-2xl gradient-text"
-              >
-                {hero.taglines[tagIndex]}
-              </motion.span>
-            </AnimatePresence>
-            <div className="w-2 h-2 rounded-full bg-gold animate-pulse" style={{ animationDelay: "0.5s" }} />
-          </div>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          className="font-display font-semibold text-xl sm:text-2xl text-ink-700 max-w-2xl mx-auto leading-relaxed mb-4"
-        >
-          {hero.headline}
+          {hero.subline}
         </motion.p>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          className="text-ink-400 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-10"
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="text-blue font-semibold text-sm tracking-wider mb-12"
         >
-          {hero.subheadline}
+          {hero.tagline}
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
-          className="flex flex-wrap items-center justify-center gap-3 mb-14"
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="flex flex-wrap items-center gap-4"
         >
           <button
-            onClick={scrollToWork}
-            className="flex items-center gap-2 px-6 py-3 bg-coral text-white font-semibold rounded-2xl hover:bg-coral-600 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+            onClick={() => scrollTo("#case-studies")}
+            className="flex items-center gap-2 px-6 py-3 bg-blue text-white font-semibold rounded-lg hover:bg-blue-700 transition-all shadow-sm hover:shadow-md cursor-pointer"
           >
-            View My Work
-            <ArrowDown size={16} />
+            View Case Studies
+            <ArrowDown size={15} />
           </button>
           <a
             href={hero.links.resume}
             download
-            className="flex items-center gap-2 px-6 py-3 bg-white text-ink font-semibold rounded-2xl border border-cream-200 hover:border-coral hover:text-coral transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
+            className="flex items-center gap-2 px-6 py-3 border border-ink-200 text-ink font-semibold rounded-lg hover:border-ink hover:bg-ink-50 transition-all"
           >
-            <Download size={16} />
+            <Download size={15} />
             Resume
           </a>
-
-          {/* Social Icons */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 ml-1">
             <a
               href={hero.links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center rounded-2xl bg-white border border-cream-200 text-ink-400 hover:text-coral hover:border-coral transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
+              className="w-10 h-10 flex items-center justify-center rounded-lg border border-ink-200 text-ink-500 hover:text-blue hover:border-blue transition-all"
               aria-label="LinkedIn"
             >
-              <LinkedInIcon size={18} />
+              <LinkedInIcon size={16} />
             </a>
             <a
               href={hero.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 flex items-center justify-center rounded-2xl bg-white border border-cream-200 text-ink-400 hover:text-coral hover:border-coral transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
+              className="w-10 h-10 flex items-center justify-center rounded-lg border border-ink-200 text-ink-500 hover:text-ink hover:border-ink transition-all"
               aria-label="GitHub"
             >
-              <GitHubIcon size={18} />
-            </a>
-            <a
-              href={hero.links.email}
-              className="w-11 h-11 flex items-center justify-center rounded-2xl bg-white border border-cream-200 text-ink-400 hover:text-coral hover:border-coral transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
-              aria-label="Email"
-            >
-              <Mail size={18} />
+              <GitHubIcon size={16} />
             </a>
           </div>
-        </motion.div>
-
-        {/* Impact Metrics */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.65, ease: "easeOut" }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto"
-        >
-          {hero.impacts.map((item, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl px-4 py-5 border border-cream-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <div className="font-display font-extrabold text-2xl sm:text-3xl gradient-text mb-1">
-                <AnimatedCounter target={item.value} />
-              </div>
-              <div className="text-xs text-ink-400 font-medium">{item.label}</div>
-            </div>
-          ))}
         </motion.div>
       </div>
 
@@ -206,14 +109,13 @@ export default function Hero() {
       <motion.button
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        onClick={scrollToWork}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-ink-300 hover:text-coral transition-colors cursor-pointer"
+        transition={{ delay: 1 }}
+        onClick={() => scrollTo("#quickscan")}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-ink-300 hover:text-ink transition-colors cursor-pointer"
       >
-        <span className="text-xs font-medium tracking-wider uppercase">Scroll</span>
         <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
         >
           <ArrowDown size={16} />
         </motion.div>
