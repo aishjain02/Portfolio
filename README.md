@@ -2,7 +2,7 @@
 
 Personal portfolio site built to show how I think, what I've shipped, and the problems I've worked on.
 
-**Live:** [aishwaryejain]([https://aishwaryejain.com](https://aishwaryeportfolio.vercel.app/)) &nbsp;·&nbsp; **LinkedIn:** [aishwarye-jain](https://www.linkedin.com/in/aishwarye-jain-9535b4221) &nbsp;·&nbsp; **Email:** jainaishwarye2004@gmail.com
+**Live:** [aishwaryejain]([(https://aishwaryeportfolio.vercel.app/]) &nbsp;·&nbsp; **LinkedIn:** [aishwarye-jain](https://www.linkedin.com/in/aishwarye-jain-9535b4221) &nbsp;·&nbsp; **Email:** jainaishwarye2004@gmail.com
 
 ---
 
