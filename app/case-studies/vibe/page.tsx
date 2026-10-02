@@ -3,7 +3,7 @@ import { caseStudy } from "@/app/data/case-studies/vibe";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "VIBE — Aishwarye Jain",
+  title: "VIBE - Aishwarye Jain",
   description: "How I designed an AI-assisted assessment integrity system at Superset.",
 };
 

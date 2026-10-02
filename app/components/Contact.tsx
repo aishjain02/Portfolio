@@ -1,14 +1,12 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Mail, Download, Copy, Check } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Download, Copy, Check, ArrowRight } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/app/components/icons";
 import { contact } from "@/app/data/content";
 
 export default function Contact() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
   const [copied, setCopied] = useState(false);
 
   const copyEmail = () => {
@@ -18,79 +16,93 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-ink-50" ref={ref}>
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl"
-        >
-          <p className="section-label mb-3">Contact</p>
-          <h2 className="font-display font-bold text-4xl sm:text-5xl text-ink mb-6">
-            Have a hard product problem? Let&apos;s talk.
-          </h2>
-          <p className="text-ink-500 text-lg mb-12">
-            Open to APM, PM and AI Product roles where I can own decisions, work with strong teams, and build at scale.
-          </p>
+    <section id="contact" className="py-8 sm:py-16 bg-ink relative overflow-hidden">
+      {/* Decorative */}
+      <div className="animate-blob absolute top-[-150px] right-[-100px] w-[500px] h-[500px] rounded-full bg-coral opacity-[0.06] blur-3xl pointer-events-none" />
+      <div className="animate-blob animation-delay-2000 absolute bottom-[-100px] left-[-100px] w-[400px] h-[400px] rounded-full bg-gold opacity-[0.05] blur-3xl pointer-events-none" />
 
-          {/* Email */}
-          <div
-            className="flex items-center justify-between gap-4 p-5 bg-white border border-ink-200 rounded-xl mb-4 group cursor-pointer hover:border-blue transition-all"
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-5 sm:mb-8"
+          >
+            <span className="label block mb-4">Contact</span>
+            <h2 className="font-display font-extrabold text-white text-2xl sm:text-4xl leading-[1.1] mb-5">
+              Have a hard product<br />problem?{" "}
+              <span className="text-gradient">Let's talk.</span>
+            </h2>
+            <p className="text-ink-400 text-lg leading-relaxed max-w-xl">
+              Open to APM, PM, and AI Product roles where I can own decisions, work with strong teams, and build at scale.
+            </p>
+          </motion.div>
+
+          {/* Email click-to-copy */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
             onClick={copyEmail}
+            className="flex items-center justify-between gap-4 p-3.5 bg-white/5 border border-white/10 rounded-2xl mb-4 cursor-pointer hover:border-coral/40 hover:bg-white/10 transition-all group"
           >
             <div className="flex items-center gap-3">
-              <Mail size={18} className="text-blue flex-shrink-0" />
-              <span className="font-medium text-ink text-sm">{contact.email}</span>
+              <div className="w-10 h-10 rounded-xl bg-coral/20 flex items-center justify-center flex-shrink-0">
+                <Mail size={18} className="text-coral" />
+              </div>
+              <div>
+                <p className="text-white font-semibold text-sm">{contact.email}</p>
+                <p className="text-ink-500 text-xs">Click to copy</p>
+              </div>
             </div>
-            <button className="flex items-center gap-1.5 text-xs font-semibold text-ink-400 group-hover:text-blue transition-colors">
+            <button className="flex items-center gap-1.5 text-xs font-bold text-ink-400 group-hover:text-coral transition-colors">
               {copied ? (
-                <><Check size={13} className="text-green-500" /> Copied!</>
+                <><Check size={13} className="text-emerald-400" /><span className="text-emerald-400">Copied!</span></>
               ) : (
                 <><Copy size={13} /> Copy</>
               )}
             </button>
-          </div>
+          </motion.div>
 
           {/* Socials */}
-          <div className="grid sm:grid-cols-3 gap-3 mb-10">
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 p-4 bg-white border border-ink-200 rounded-xl hover:border-blue hover:shadow-sm transition-all group"
-            >
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3"
+          >
+            <a href={contact.linkedin} target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl hover:border-[#0A66C2]/50 hover:bg-[#0A66C2]/10 transition-all group">
               <LinkedInIcon size={18} className="text-[#0A66C2]" />
               <div>
-                <p className="text-xs font-bold text-ink">LinkedIn</p>
-                <p className="text-ink-400 text-xs">aishwarye-jain</p>
+                <p className="text-xs font-bold text-white">LinkedIn</p>
+                <p className="text-ink-500 text-xs">aishwarye-jain</p>
               </div>
+              <ArrowRight size={12} className="text-ink-500 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
-            <a
-              href={contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 p-4 bg-white border border-ink-200 rounded-xl hover:border-ink hover:shadow-sm transition-all group"
-            >
-              <GitHubIcon size={18} />
+            <a href={contact.github} target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl hover:border-white/30 hover:bg-white/10 transition-all group">
+              <GitHubIcon size={18} className="text-ink-300" />
               <div>
-                <p className="text-xs font-bold text-ink">GitHub</p>
-                <p className="text-ink-400 text-xs">aishjain02</p>
+                <p className="text-xs font-bold text-white">GitHub</p>
+                <p className="text-ink-500 text-xs">aishjain02</p>
               </div>
+              <ArrowRight size={12} className="text-ink-500 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
-            <a
-              href={contact.resume}
-              download
-              className="flex items-center gap-3 p-4 bg-blue text-white border border-blue rounded-xl hover:bg-blue-700 transition-all"
-            >
+            <a href={contact.resume} download
+              className="flex items-center gap-3 p-4 bg-coral text-white border border-coral rounded-2xl hover:bg-coral-600 transition-all group shadow-lg shadow-coral/20">
               <Download size={18} />
               <div>
                 <p className="text-xs font-bold">Resume</p>
-                <p className="text-blue-200 text-xs">Download PDF</p>
+                <p className="text-coral-100 text-xs">Download PDF</p>
               </div>
+              <ArrowRight size={12} className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

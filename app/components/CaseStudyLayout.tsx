@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, Download, Quote } from "lucide-react";
 import Link from "next/link";
 import { featuredCaseStudies } from "@/app/data/content";
 
@@ -16,6 +16,7 @@ type Section = {
 type CaseStudy = {
   number: string;
   title: string;
+  fullTitle?: string;
   subtitle: string;
   company: string;
   type: string;
@@ -34,16 +35,14 @@ export default function CaseStudyLayout({ cs }: { cs: CaseStudy }) {
     const handleScroll = () => {
       const el = articleRef.current;
       if (!el) return;
-      const rect = el.getBoundingClientRect();
       const total = el.offsetHeight - window.innerHeight;
-      const scrolled = Math.max(0, -rect.top);
+      const scrolled = Math.max(0, window.scrollY - el.offsetTop);
       setProgress(Math.min(100, (scrolled / total) * 100));
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Intersection observer for active section
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -67,31 +66,28 @@ export default function CaseStudyLayout({ cs }: { cs: CaseStudy }) {
   return (
     <>
       {/* Reading progress bar */}
-      <div
-        className="progress-bar"
-        style={{ width: `${progress}%` }}
-      />
+      <div className="progress-bar" style={{ width: `${progress}%` }} />
 
       <div className="min-h-screen bg-white">
         {/* Top Nav */}
-        <nav className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-ink-200">
+        <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-ink-200 shadow-sm">
           <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
             <Link
               href="/"
-              className="flex items-center gap-2 text-ink-500 hover:text-blue transition-colors text-sm font-medium"
+              className="flex items-center gap-2 text-ink-500 hover:text-coral transition-colors text-sm font-semibold"
             >
               <ArrowLeft size={15} />
-              Back
+              Back to Portfolio
             </Link>
-            <span className="text-xs font-bold text-ink-400 tracking-widest uppercase">
-              Case Study {cs.number}
+            <span className="hidden sm:block text-xs font-bold text-ink-400 tracking-widest uppercase">
+              {cs.company} · Case Study {cs.number}
             </span>
             <a
               href="/resume.pdf"
               download
-              className="text-sm font-semibold text-blue hover:text-blue-700 transition-colors"
+              className="flex items-center gap-1.5 text-sm font-bold text-coral hover:text-coral-600 transition-colors"
             >
-              Resume ↓
+              <Download size={13} /> Resume
             </a>
           </div>
         </nav>
@@ -107,32 +103,38 @@ export default function CaseStudyLayout({ cs }: { cs: CaseStudy }) {
                 transition={{ duration: 0.5 }}
                 className="mb-12"
               >
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="section-number">{cs.number}</span>
-                  <span className="w-px h-4 bg-ink-200" />
+                {/* Meta row */}
+                <div className="flex flex-wrap items-center gap-2 mb-5">
+                  <span className="text-xs font-extrabold text-coral tracking-widest uppercase">{cs.number}</span>
+                  <span className="text-ink-200">·</span>
                   <span className="text-xs font-semibold text-ink-500 uppercase tracking-wider">{cs.company}</span>
-                  <span className="w-px h-4 bg-ink-200" />
-                  <span className="px-2 py-0.5 rounded text-xs font-semibold bg-blue-50 text-blue-700">{cs.type}</span>
+                  <span className="text-ink-200">·</span>
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-coral-50 text-coral border border-coral-200">{cs.type}</span>
                 </div>
-                <h1 className="font-display font-bold text-4xl sm:text-5xl text-ink leading-tight mb-3">
+
+                <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-ink leading-tight mb-1">
                   {cs.title}
                 </h1>
+                {cs.fullTitle && (
+                  <p className="text-ink-400 text-sm font-semibold tracking-wide mb-4">
+                    {cs.fullTitle}
+                  </p>
+                )}
                 <p className="text-ink-500 text-lg leading-relaxed mb-8">{cs.subtitle}</p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-10">
                   {cs.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-ink-50 text-ink-500 text-xs font-semibold rounded-lg border border-ink-200"
-                    >
+                    <span key={tag}
+                      className="px-3 py-1.5 bg-cream border border-ink-200 text-ink-500 text-xs font-semibold rounded-xl">
                       {tag}
                     </span>
                   ))}
                 </div>
 
                 {/* Hook Pull Quote */}
-                <div className="border-l-4 border-blue pl-6 py-2">
+                <div className="rounded-2xl bg-coral-50 border border-coral-200 p-6 flex gap-4">
+                  <Quote size={20} className="text-coral flex-shrink-0 mt-1" />
                   <p className="text-ink-700 font-display font-semibold text-xl leading-relaxed italic">
                     &ldquo;{cs.hook}&rdquo;
                   </p>
@@ -149,18 +151,14 @@ export default function CaseStudyLayout({ cs }: { cs: CaseStudy }) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-80px" }}
                     transition={{ duration: 0.45, delay: i * 0.03 }}
+                    className="cs-section"
                   >
-                    <h2 className="font-display font-bold text-xs uppercase tracking-widest text-blue mb-3">
-                      {section.label}
-                    </h2>
-                    <p className="text-ink-700 leading-[1.85] text-[1.0625rem]">{section.content}</p>
+                    <h2>{section.label}</h2>
+                    <p>{section.content}</p>
                     {section.bullets && (
                       <ul className="mt-4 space-y-2.5">
                         {section.bullets.map((b, bi) => (
-                          <li key={bi} className="flex gap-3 text-ink-600 text-[1.0625rem] leading-relaxed">
-                            <span className="text-blue font-bold flex-shrink-0 mt-0.5">—</span>
-                            {b}
-                          </li>
+                          <li key={bi}>{b}</li>
                         ))}
                       </ul>
                     )}
@@ -172,15 +170,15 @@ export default function CaseStudyLayout({ cs }: { cs: CaseStudy }) {
             {/* Sticky TOC (desktop) */}
             <aside className="hidden lg:block">
               <div className="sticky top-24">
-                <p className="section-number mb-4">ON THIS PAGE</p>
+                <p className="text-[10px] font-extrabold text-ink-400 uppercase tracking-widest mb-4">On This Page</p>
                 <nav className="space-y-1">
                   {cs.sections.map((section) => (
                     <a
                       key={section.id}
                       href={`#${section.id}`}
-                      className={`block text-sm py-1 pl-3 border-l-2 transition-all ${
+                      className={`block text-xs py-1.5 pl-3 border-l-2 transition-all ${
                         activeSection === section.id
-                          ? "border-blue text-blue font-semibold"
+                          ? "border-coral text-coral font-bold"
                           : "border-ink-200 text-ink-400 hover:text-ink-700 hover:border-ink-400"
                       }`}
                     >
@@ -195,19 +193,19 @@ export default function CaseStudyLayout({ cs }: { cs: CaseStudy }) {
           {/* Related Case Studies */}
           {relatedStudies.length > 0 && (
             <div className="mt-24 pt-12 border-t border-ink-200">
-              <p className="section-label mb-8">More Case Studies</p>
+              <span className="label block mb-8">More Case Studies</span>
               <div className="grid sm:grid-cols-3 gap-5">
                 {relatedStudies.map((r) => (
                   <Link
                     key={r.slug}
                     href={`/case-studies/${r.slug}`}
-                    className="group p-5 border border-ink-200 rounded-xl hover:border-blue hover:shadow-sm transition-all"
+                    className="group rounded-2xl p-5 border border-ink-200 bg-cream card-hover"
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <span className="section-number">{r.number}</span>
-                      <ExternalLink size={13} className="text-ink-300 group-hover:text-blue transition-colors" />
+                      <span className="text-2xl font-display font-extrabold text-coral/30">{r.number}</span>
+                      <span className="text-xs font-bold text-coral border border-coral-200 bg-coral-50 px-2 py-0.5 rounded-full">{r.type}</span>
                     </div>
-                    <h3 className="font-display font-bold text-ink text-base group-hover:text-blue transition-colors mb-1">
+                    <h3 className="font-display font-extrabold text-ink text-base group-hover:text-coral transition-colors mb-1">
                       {r.title}
                     </h3>
                     <p className="text-ink-400 text-sm leading-relaxed line-clamp-2">{r.problem}</p>

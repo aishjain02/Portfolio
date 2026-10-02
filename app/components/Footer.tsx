@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
           <p className="font-display font-bold text-white text-sm">Aishwarye Jain</p>
-          <p className="text-ink-400 text-xs mt-0.5">Product Builder · Bengaluru</p>
+          <p className="text-ink-400 text-xs mt-0.5">Product Specialist · Zepto · Bengaluru</p>
         </div>
 
         <div className="flex items-center gap-2">

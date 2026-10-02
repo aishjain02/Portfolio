@@ -16,7 +16,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Aishwarye Jain — Product Builder",
+  title: "Aishwarye Jain - Product Specialist",
   description:
     "Product builder at the intersection of AI, Consumer Tech & Automation. Building products that turn messy workflows into simple, measurable systems.",
   keywords: [
@@ -24,20 +24,20 @@ export const metadata: Metadata = {
     "AI Products",
     "Consumer Tech",
     "Zepto",
-    "Product Builder",
+    "Product Specialist",
     "APM",
     "Aishwarye Jain",
   ],
   authors: [{ name: "Aishwarye Jain" }],
   openGraph: {
-    title: "Aishwarye Jain — Product Builder",
+    title: "Aishwarye Jain - Product Specialist",
     description:
       "Building products at the intersection of AI, Consumer Tech & Automation.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aishwarye Jain — Product Builder",
+    title: "Aishwarye Jain - Product Specialist",
     description:
       "Building products at the intersection of AI, Consumer Tech & Automation.",
   },

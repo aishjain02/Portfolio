@@ -1,140 +1,165 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Primary Palette ── */
-  --color-blue: #2563EB;
-  --color-blue-50: #EFF6FF;
-  --color-blue-100: #DBEAFE;
-  --color-blue-200: #BFDBFE;
-  --color-blue-400: #60A5FA;
-  --color-blue-500: #3B82F6;
-  --color-blue-600: #2563EB;
-  --color-blue-700: #1D4ED8;
-  --color-blue-800: #1E40AF;
-  --color-blue-900: #1E3A8A;
+  /* ── Brand Coral ── */
+  --color-coral: #FF6B4A;
+  --color-coral-50: #FFF3F0;
+  --color-coral-100: #FFE4DD;
+  --color-coral-200: #FFCABC;
+  --color-coral-400: #FF8E75;
+  --color-coral-500: #FF6B4A;
+  --color-coral-600: #E84D2A;
+  --color-coral-700: #C93A19;
 
-  /* ── Accent ── */
-  --color-amber: #F59E0B;
-  --color-amber-50: #FFFBEB;
-  --color-amber-100: #FEF3C7;
-  --color-amber-500: #F59E0B;
-  --color-amber-600: #D97706;
+  /* ── Gold ── */
+  --color-gold: #F5A623;
+  --color-gold-50: #FFFBEB;
+  --color-gold-100: #FEF3C7;
+  --color-gold-500: #F5A623;
+  --color-gold-600: #D97706;
 
-  /* ── Neutral / Slate ── */
-  --color-ink: #0F172A;
-  --color-ink-800: #1E293B;
-  --color-ink-700: #334155;
-  --color-ink-500: #64748B;
-  --color-ink-400: #94A3B8;
-  --color-ink-300: #CBD5E1;
-  --color-ink-200: #E2E8F0;
-  --color-ink-100: #F1F5F9;
-  --color-ink-50: #F8FAFC;
+  /* ── Ink / Dark ── */
+  --color-ink: #0A0A0F;
+  --color-ink-900: #111827;
+  --color-ink-800: #1F2937;
+  --color-ink-700: #374151;
+  --color-ink-600: #4B5563;
+  --color-ink-500: #6B7280;
+  --color-ink-400: #9CA3AF;
+  --color-ink-300: #D1D5DB;
+  --color-ink-200: #E5E7EB;
+  --color-ink-100: #F3F4F6;
+  --color-ink-50: #F9FAFB;
 
-  /* ── Surface ── */
-  --color-surface: #FFFFFF;
-  --color-surface-alt: #F8FAFC;
+  /* ── Cream ── */
+  --color-cream: #FDFCF8;
+  --color-cream-100: #F7F3EE;
+  --color-cream-200: #EDE8E0;
 
   /* ── Fonts ── */
   --font-sans: var(--font-inter);
   --font-display: var(--font-jakarta);
 }
 
-/* ── Base ── */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: #FFFFFF;
-  color: #0F172A;
+  background: #FDFCF8;
+  color: #0A0A0F;
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-jakarta), system-ui, sans-serif;
 }
 
-/* ── Selection ── */
-::selection {
-  background: #DBEAFE;
-  color: #1E3A8A;
+::selection { background: #FF6B4A30; color: #0A0A0F; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #FDFCF8; }
+::-webkit-scrollbar-thumb { background: #FF6B4A60; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #FF6B4A; }
+
+/* ── Gradient text ── */
+.text-gradient {
+  background: linear-gradient(135deg, #FF6B4A 0%, #F5A623 60%, #FF6B4A 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
 }
 
-/* ── Scrollbar ── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #F8FAFC; }
-::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
-
-/* ── Utilities ── */
-.section-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #2563EB;
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
-.section-number {
-  font-family: var(--font-jakarta), sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #94A3B8;
-}
-
-/* ── Reading Progress Bar ── */
-.progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #2563EB, #60A5FA);
-  z-index: 999;
-  transition: width 0.1s linear;
+/* ── Noise texture overlay ── */
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ── Blob animation ── */
-@keyframes blobDrift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(20px, -30px) scale(1.05); }
-  66% { transform: translate(-15px, 15px) scale(0.97); }
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(30px, -40px) scale(1.1) rotate(5deg); }
+  50% { transform: translate(-20px, 20px) scale(0.95) rotate(-3deg); }
+  75% { transform: translate(10px, 30px) scale(1.05) rotate(2deg); }
 }
-.blob-drift { animation: blobDrift 12s ease-in-out infinite; }
-.blob-drift-slow { animation: blobDrift 16s ease-in-out infinite 3s; }
+.animate-blob { animation: blob 12s ease-in-out infinite; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* ── Float animation ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+/* ── Fade up ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeUp 0.6s ease forwards; }
+
+/* ── Reading progress ── */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FF6B4A, #F5A623);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ── Card hover glow ── */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(255, 107, 74, 0.2);
+  border-color: #FF6B4A50 !important;
+}
+
+/* ── Section label ── */
+.label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF6B4A;
+}
+
+/* ── Hide scrollbar but keep scroll ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
 /* ── Case study prose ── */
-.prose-case h2 {
+.cs-section h2 {
   font-family: var(--font-jakarta), sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #0F172A;
-  margin-top: 2.5rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF6B4A;
   margin-bottom: 0.75rem;
 }
-.prose-case p {
-  color: #334155;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
-.prose-case ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 1rem;
-}
-.prose-case ul li {
-  display: flex;
-  gap: 0.625rem;
-  color: #334155;
-  line-height: 1.7;
-  margin-bottom: 0.5rem;
-}
-.prose-case ul li::before {
-  content: "—";
-  color: #2563EB;
-  flex-shrink: 0;
-  font-weight: 600;
-}
+.cs-section p { color: #374151; line-height: 1.85; margin-bottom: 1rem; font-size: 1.05rem; }
+.cs-section li { display: flex; gap: 0.75rem; color: #374151; line-height: 1.7; margin-bottom: 0.625rem; font-size: 1.05rem; }
+.cs-section li::before { content: "→"; color: #FF6B4A; font-weight: 700; flex-shrink: 0; }

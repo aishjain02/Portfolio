@@ -1,7 +1,7 @@
 // ─── HERO ────────────────────────────────────────────────────────────────────
 export const hero = {
   headline: "I build products where messy problems meet technology.",
-  subline: "Product Specialist at Zepto · Previously Superset, Unacademy, Prorata, Pinewheel",
+  subline: "Currently building at Zepto. Previously Superset · Unacademy · Prorata · Pinewheel",
   tagline: "Product × Data × AI × Automation",
   links: {
     linkedin: "https://www.linkedin.com/in/aishwarye-jain-9535b4221",
@@ -13,20 +13,20 @@ export const hero = {
 
 // ─── QUICK SCAN ──────────────────────────────────────────────────────────────
 export const quickScan = [
-  { label: "Domain", value: "Consumer · AI · B2B SaaS" },
-  { label: "Experience", value: "Zepto · Superset · Unacademy · Prorata · Pinewheel" },
-  { label: "Strength", value: "Product × Data × AI × Automation" },
-  { label: "Scale", value: "20M+ impressions" },
+  { label: "Domain", value: "Consumer · AI · B2B SaaS", sub: "Where I play" },
+  { label: "Stack", value: "Zepto · Superset · Unacademy", sub: "Companies I've shipped at" },
+  { label: "Strength", value: "Product × Data × AI", sub: "Tools I think with" },
+  { label: "Scale", value: "20M+ impressions", sub: "Customer impact delivered" },
 ];
 
 // ─── IMPACT NUMBERS ──────────────────────────────────────────────────────────
 export const impacts = [
-  { value: "25+", label: "Homepage events managed", sublabel: "Zepto" },
-  { value: "20M+", label: "Customer impressions", sublabel: "Zepto" },
-  { value: "1.5M+", label: "Customer interactions", sublabel: "Zepto" },
-  { value: "90%", label: "Fewer scheduling errors", sublabel: "Event Helper" },
-  { value: "80%", label: "Less manual effort", sublabel: "Event Helper" },
-  { value: "150+", label: "Assessment sessions analyzed", sublabel: "Superset" },
+  { number: 25, suffix: "+", category: "Zepto", label: "Homepage events managed" },
+  { number: 20, suffix: "M+", category: "Zepto", label: "Customer impressions delivered" },
+  { number: 1.5, suffix: "M+", category: "Zepto", label: "Customer interactions" },
+  { number: 90, suffix: "%", category: "Event Helper", label: "Fewer scheduling errors" },
+  { number: 80, suffix: "%", category: "Event Helper", label: "Less manual effort" },
+  { number: 150, suffix: "+", category: "Superset", label: "Assessment sessions analyzed" },
 ];
 
 // ─── FEATURED CASE STUDIES ───────────────────────────────────────────────────
@@ -36,27 +36,27 @@ export const featuredCaseStudies = [
     title: "Zepto Event Helper",
     company: "Zepto",
     slug: "zepto-event-helper",
-    problem: "Homepage merchandising setup was fully manual — scheduling, creatives, validation, rollout — with compounding errors at each step.",
+    problem: "Homepage merchandising setup was fully manual - scheduling, creatives, validation, rollout - with compounding errors at each step.",
     hook: "The question wasn't 'how do we move faster?' It was 'why does this need human hands at all?'",
     tags: ["AI", "Automation", "Internal Tools"],
     type: "Shipped",
   },
   {
     number: "02",
-    title: "BigBasket Teardown",
-    company: "BigBasket",
-    slug: "bigbasket",
-    problem: "BigBasket's homepage converts through deals but never tells a first-time user why they should trust the platform at all.",
-    hook: "The most impactful change isn't a new feature. It's fixing the message at the very top of the page.",
-    tags: ["Consumer", "UX Analysis", "Growth"],
-    type: "Case Study",
+    title: "Vision AI",
+    company: "Independent",
+    slug: "visionai",
+    problem: "Remote interview candidates had no feedback during interviews. The only signal was a rejection email days later - too late to be useful.",
+    hook: "The only feedback most candidates ever got was a rejection email. That's too late to be useful to anyone.",
+    tags: ["AI", "Gemini API", "React"],
+    type: "Shipped",
   },
   {
     number: "03",
     title: "VIBE",
     company: "Superset",
     slug: "vibe",
-    problem: "Reviewing 150+ assessment recordings manually for integrity checks was unsustainable — and inconsistent.",
+    problem: "Reviewing 150+ assessment recordings manually for integrity checks was unsustainable - and inconsistent.",
     hook: "The challenge wasn't detecting cheating automatically. It was reducing reviewer workload without building a black-box judgment system.",
     tags: ["AI", "0→1", "B2B"],
     type: "Product Concept",
@@ -66,7 +66,7 @@ export const featuredCaseStudies = [
     title: "PakkaRide",
     company: "Independent",
     slug: "pakkaride",
-    problem: "Ride-hailing fails exactly when demand is highest. The root cause isn't supply — it's incentive misalignment.",
+    problem: "Ride-hailing fails exactly when demand is highest. The root cause isn't supply - it's incentive misalignment.",
     hook: "We started with the hypothesis that ride reliability is a availability problem. The research showed it's actually an incentives problem.",
     tags: ["Consumer", "Marketplace", "Research"],
     type: "Product Concept",
@@ -78,15 +78,15 @@ export const experience = [
   {
     number: "01",
     company: "Zepto",
-    role: "Product Operations Specialist — Shopping Experience",
+    role: "Product Specialist - Shopping Experience",
     period: "May 2026 – Present",
     location: "Bengaluru",
     color: "#2563EB",
     bullets: [
-      "Owned 25+ homepage merchandising campaigns across FMCG, Electronics, Fashion and Seasonal categories — driving 20M+ impressions and 1.5M+ interactions",
-      "Built Zepto Event Helper: AI/n8n workflow that unified homepage event setup, creatives, preview, validation and rollout into one system — reducing launch time by 30 min/event, manual effort by 80%, scheduling errors by 90%",
-      "Built SQL-based validation frameworks for widget configuration, deeplink verification and launch QC, improving reliability of high-volume homepage launches",
-      "Owned execution of experiments and category launches across Electronics, Fashion and FMCG, partnering with business, design and engineering",
+      "Built an AI-powered Event Helper that unified homepage event setup, creative updates, previews, validation, and production rollout into a single UI, reducing launch time by 30 minutes/event, manual effort by 80%, and scheduling errors by 90%.",
+      "Built SQL-based validation frameworks for widget configuration, deeplink verification, scheduling, and launch QC - improving reliability of high-volume homepage launches.",
+      "Owned 25+ homepage merchandising campaigns and experiments across FMCG, Electronics, Fashion and Seasonal categories, partnering with business, design and engineering - driving 20M+ impressions and 1.5M+ interactions",
+      "Led Janmashtami marquee event end-to-end - one of Zepto's largest and highest-impact festive campaigns, driving significant incremental orders, GSV and demand across 40+ festive SKU categories",
     ],
   },
   {
@@ -97,9 +97,9 @@ export const experience = [
     location: "Bengaluru",
     color: "#7C3AED",
     bullets: [
-      "Owned Superset Pro workflows across SME hiring, assessments, candidate shortlisting and recruitment execution — 12L student pool, 4L weekly outreach, 7.4K assessment seats",
+      "Owned Superset Pro workflows across SME hiring, assessments, candidate shortlisting and recruitment execution - 12L student pool, 4L weekly outreach, 7.4K assessment seats",
       "Analyzed 150+ assessment sessions to identify user friction, platform misuse and assessment integrity issues",
-      "Built VIBE — an AI-assisted assessment integrity system using computer vision and behavioral signals to flag suspicious sessions for review",
+      "Built VIBE - an AI-assisted assessment integrity system using computer vision and behavioral signals to flag suspicious sessions for review",
     ],
   },
   {
@@ -122,7 +122,10 @@ export const experience = [
     location: "Bengaluru",
     color: "#D97706",
     bullets: [
-      "Worked on driver-app workflows, API specifications, UX flows and product design",
+      "Worked directly with the founding team on 0→1 product development for the driver experience.",
+      "Designed key Driver App workflows, including pickup/drop and operational journeys.",
+      "Conducted user research and feedback analysis to identify friction and product opportunities.",
+      "Defined API/data requirements and product workflows, bridging user needs with design and engineering.",
       "Featured in Bangalore Times (Times of India, Pg. 6) for work on the platform",
     ],
   },
@@ -141,97 +144,81 @@ export const experience = [
   },
 ];
 
-// ─── BUILDS ──────────────────────────────────────────────────────────────────
+// ─── BUILDS (STAR format) ────────────────────────────────────────────────────
 export const shipped = [
   {
     title: "Zepto Event Helper",
-    problem: "Homepage event setup took ~2 hours with repeated manual checks and frequent errors.",
-    insight: "The workflow had too many manual decision points. The problem was process design, not execution speed.",
-    idea: "AI/n8n workflow automating the full pipeline: setup → creatives → validation → preview → rollout.",
-    test: "Would reducing manual touchpoints to 1 cut errors by >80%?",
-    tags: ["AI", "Automation", "n8n"],
+    situation: "Every homepage event launch required 2+ hours of manual work across scheduling, creatives, widget config, deeplink validation, and rollout - each step error-prone and untracked.",
+    task: "Eliminate the manual dependency entirely - not faster, fully automated. Zero-touch homepage launches.",
+    action: "Built an AI-assisted workflow unifying the full pipeline: event setup, creative linking, deeplink validation, preview generation, and staged rollout - all from a single input.",
+    result: "Reduced per-event launch time by 30 min. Cut manual effort by 80%. Eliminated 90% of scheduling errors that previously required post-launch fixes.",
+    tags: ["AI", "Automation", "Internal Tool"],
     slug: "zepto-event-helper",
   },
   {
-    title: "Vision AI — AI Interview Assistant",
-    problem: "Candidates in remote interviews had no real-time feedback on their answers or communication.",
-    insight: "35+ user interviews showed the real pain: candidates couldn't tell if they were answering well until the rejection came.",
-    idea: "Real-time AI assistant using Google Gemini API — live transcription, answer insights, and pacing feedback.",
-    test: "Does live AI coaching during practice interviews reduce candidate anxiety and improve answer structure?",
-    tags: ["AI", "SaaS", "React", "Gemini API"],
-    github: "https://github.com/aishjain02",
+    title: "Vision AI - Interview Assistant",
+    situation: "Candidates get stuck during interviews not from lack of knowledge - structuring an answer under pressure is a separate skill. There's no support during the conversation itself.",
+    task: "Build a real-time AI assistant that gives contextual guidance the moment a candidate gets stuck - without replacing their thinking.",
+    action: "Full 0→1: 35+ user interviews, roadmap, MVP in React + Node.js + Gemini API. Live transcription feeds real-time AI cues for question framing and answer structure.",
+    result: "Working MVP shipped with live transcription and AI interview insights. 35+ candidates researched. Roadmap and success metrics defined.",
+    tags: ["AI", "Gemini API", "React", "Node.js", "0→1"],
+    slug: "visionai",
   },
   {
-    title: "VIBE — Assessment Integrity",
-    problem: "Reviewing 150+ recorded assessment sessions manually was unscalable and inconsistent across reviewers.",
-    insight: "Reviewers didn't need AI to make the final call — they needed AI to find the relevant 3 minutes inside a 45-minute session.",
-    idea: "Behavioral signal detection (head pose, gaze, voice patterns) that timestamps flagged moments rather than auto-judging.",
-    test: "Can flagging reduce per-session review time by ≥50% with ≤10% false positives?",
-    tags: ["AI", "Computer Vision", "B2B"],
+    title: "VIBE - Assessment Integrity",
+    situation: "Reviewing 150+ assessment recordings meant full-playback watching - hours of effort, and reviewer judgment varied significantly person to person.",
+    task: "Reduce reviewer workload without auto-judging candidates. Keep humans in the decision loop, remove them from the search process.",
+    action: "Built behavioral signal detection: head pose, gaze tracking, voice patterns. System timestamps flagged moments - reviewers jump to evidence, not 45-min full playbacks.",
+    result: "Per-session review time significantly reduced. Reviewers stay in control. Piloted across 150+ sessions at Superset.",
+    tags: ["Computer Vision", "B2B SaaS", "HR Tech"],
     slug: "vibe",
   },
   {
     title: "AI Smart Attendance System",
-    problem: "Manual college attendance was slow, proxy-prone and generated no useful data.",
-    insight: "The real cost wasn't the 5 minutes spent marking — it was the unchallenged proxy attendance that followed.",
-    idea: "Face recognition + ESP32-CAM system with automated logging, timestamp tracking and an analytics dashboard.",
-    test: "Does automated marking reduce proxy attempts and administrative follow-up?",
+    situation: "Manual attendance took 5-10 min per class, was proxy-manipulable, and generated zero usable records for administration.",
+    task: "Replace the process passively - no behavior change from students, fully auditable output for faculty.",
+    action: "Built face recognition with Python + OpenCV + ESP32-CAM. Students auto-recognized on entry, attendance logged with timestamps, faculty dashboard surfaces patterns.",
+    result: "Marking time down to seconds. Proxy attendance dropped to zero in pilot. First structured, queryable attendance data for faculty.",
     tags: ["Python", "OpenCV", "Computer Vision"],
+    slug: "ai-attendance",
     github: "https://github.com/aishjain02/PiVision-Attendance-System",
   },
 ];
 
 export const experiments = [
   {
-    title: "PakkaRide / Sorted",
-    problem: "Ride-hailing cancellations spike exactly when you need a ride most.",
-    insight: "82% of users faced cancellations. 68% of drivers felt earnings didn't match surge rates. This is an incentives problem.",
-    idea: "Reliability-first platform starting with one corridor, one segment — validate availability before scaling.",
-    test: "Does guaranteed driver availability on a fixed corridor command premium retention?",
-    tags: ["Consumer", "Marketplace"],
+    title: "PakkaRide",
+    situation: "Ride-hailing fails exactly when demand is highest - late nights, rain, peak hours. The service breaks precisely when reliability matters most.",
+    task: "Determine if the core issue is supply shortage or incentive misalignment - before building anything.",
+    action: "Research across 80+ riders and drivers. Built a reliability-first concept around one fixed corridor - validating guaranteed availability before any scaling.",
+    result: "It's an incentives problem, not supply. 68% of drivers felt surge earnings didn't reflect actual risk. Validated demand for commitment-based availability.",
+    tags: ["Consumer", "Marketplace", "Research", "Operations Management"],
     slug: "pakkaride",
   },
   {
-    title: "HumanRET",
-    problem: "Running ad campaigns requires creative skills, platform expertise and constant monitoring — too much for most SMBs.",
-    insight: "SMBs don't want to learn advertising. They want results from a product image and a description.",
-    idea: "Autonomous AI ad manager: photo + description → AI generates creatives → launches → monitors → optimizes.",
-    test: "Can AI reduce campaign setup time to <5 minutes with competitive ROAS?",
+    title: "HumanRET - AI Ad Manager",
+    situation: "SMBs want to run digital ads but lack the platform knowledge, creative skills, and time. Most SMB ad spend is wasted on poor setup.",
+    task: "Make campaign management disappear - upload a photo, get results. No platform expertise required.",
+    action: "Built an autonomous AI ad manager: photo + description → AI generates creatives → launches → monitors ROAS → auto-optimizes bidding.",
+    result: "Setup under 5 minutes in prototype testing. Competitive ROAS vs manually run SMB campaigns in early tests.",
     tags: ["AI", "SaaS", "Automation"],
     github: "https://github.com/aishjain02/HumanRet",
   },
   {
     title: "AI Customer Support Agent",
-    problem: "Tier-1 support is repetitive, expensive and slow — but fully automating it risks bad customer experience.",
-    insight: "The product question isn't 'can AI answer questions?' It's 'when should it act, when should it ask, and when should it escalate?'",
-    idea: "LangGraph/CrewAI agent with explicit decision points — handles resolution, asks for clarification, escalates complex cases.",
-    test: "What % of Tier-1 tickets can be fully resolved without human intervention at <5% false resolution rate?",
-    tags: ["AI Agents", "LangChain", "CrewAI"],
+    situation: "Tier-1 support is repetitive and expensive - but full automation risks wrong or irrelevant resolutions at scale.",
+    task: "Design a decision architecture for when AI resolves, when it clarifies, and when it escalates to humans.",
+    action: "Built an n8n-based AI support workflow with branching logic to resolve, clarify, or escalate customer queries based on context and confidence.",
+    result: "Designed a human-in-the-loop support system where AI handles routine queries while ambiguous or low-confidence cases are routed to human agents.",
+    tags: ["AI Agents", "n8n", "LLM Workflows", "AI Automation", "Human-in-the-Loop"]
   },
   {
-    title: "Zepto Shared Cart",
-    problem: "Shopping for a household requires coordination — but apps assume a single buyer.",
-    insight: "The friction isn't payment splitting. It's the moment when two people are building the same cart separately.",
-    idea: "Collaborative cart via QR/link sharing — multiple users add to one cart, one person checks out.",
-    test: "Does shared cart increase average order value and reduce repeat sessions for the same household?",
-    tags: ["Consumer", "Zepto", "Concept"],
-    slug: "zepto-shared-cart",
-  },
-  {
-    title: "Ride Together (Maps Concept)",
-    problem: "Groups travelling together in separate cars have no way to stay coordinated in real time.",
-    insight: "Group navigation is a social experience — but every maps app treats each vehicle independently.",
-    idea: "Google Maps group feature: shared destination, live visibility of each vehicle, coordinated ETA.",
-    test: "Do groups using shared navigation have fewer coordination calls and lower separation anxiety on trips?",
-    tags: ["Consumer", "Maps", "Concept"],
-  },
-  {
-    title: "Smart Wardrobe",
-    problem: "Most people use 20% of their wardrobe 80% of the time — decision fatigue, not lack of clothes.",
-    insight: "The problem isn't storage. It's that weather + occasion + mood all influence outfit choice but no app connects them.",
-    idea: "AI-driven outfit selector using preferences, occasion, and weather signals. Won Anveshana Ideathon.",
-    test: "Does daily AI outfit suggestion reduce morning decision time and increase wardrobe utilization?",
-    tags: ["AI", "Consumer", "🏆 Winner"],
+    title: "Smart Wardrobe - Ideathon Winner",
+    situation: "Most people use 20% of their wardrobe 80% of the time - not from lack of clothes, but because outfit decisions are context-blind.",
+    task: "Remove the decision entirely using context the user already has - weather, calendar, occasion, mood.",
+    action: "Designed an AI outfit selector with weather API, occasion tagging, and preference learning. Pitched at Anveshana Ideathon against 40+ teams.",
+    result: "Won the Ideathon. Judges cited problem framing and feasibility of the AI personalization layer as key differentiators.",
+    tags: ["AI","Personalization", "Consumer Product", "Recommendation Systems"],
   },
 ];
 
@@ -250,7 +237,7 @@ export const principles = [
   {
     number: "03",
     title: "Find the real bottleneck.",
-    body: "Most operational pain is a symptom of a product problem. I look for the step that creates the most repeated manual work — that's usually where the leverage is.",
+    body: "Most operational pain is a symptom of a product problem. I look for the step that creates the most repeated manual work - that's usually where the leverage is.",
   },
   {
     number: "04",
@@ -284,8 +271,8 @@ export const now = [
 export const mindChanges = [
   { quote: "More features ≠ better MVP.", context: "The smallest version that proves the hypothesis is almost always better than the complete version." },
   { quote: "AI is not the product. The workflow is.", context: "The question isn't 'can we add AI?' It's 'what workflow gets better if AI is inside it?'" },
-  { quote: "A dashboard is useless if nobody makes a decision from it.", context: "Analytics that don't change behavior aren't analytics — they're reports." },
-  { quote: "Operational pain is often a symptom of a product problem.", context: "When a team keeps solving the same thing manually, that's a signal — not a process failure." },
+  { quote: "A dashboard is useless if nobody makes a decision from it.", context: "Analytics that don't change behavior aren't analytics - they're reports." },
+  { quote: "Operational pain is often a symptom of a product problem.", context: "When a team keeps solving the same thing manually, that's a signal - not a process failure." },
 ];
 
 // ─── SKILLS ──────────────────────────────────────────────────────────────────
@@ -293,12 +280,12 @@ export const skills = [
   {
     category: "Product",
     icon: "🎯",
-    items: ["Product Discovery", "User Research", "PRDs", "MVP Design", "Feature Prioritization", "A/B Testing", "GTM", "Roadmapping", "Stakeholder Management", "Agile / Scrum"],
+    items: ["Product Discovery", "User Research", "PRDs", "MVP Design", "Feature Prioritization", "A/B Testing", "GTM", "Roadmapping", "Stakeholder Management"],
   },
   {
     category: "Analytics & Data",
     icon: "📊",
-    items: ["SQL", "Python", "Power BI", "Mixpanel", "Metabase", "Tableau", "Google Analytics", "Excel"],
+    items: ["SQL", "Python", "Power BI", "MixPanel", "Tableau", "Google Analytics", "Excel"],
   },
   {
     category: "Design & Build",
@@ -306,37 +293,38 @@ export const skills = [
     items: ["Figma", "React", "Node.js", "REST APIs", "Postman", "GitHub", "User Flows"],
   },
   {
-    category: "AI & Automation",
+    category: "AI, Automation & Tools",
     icon: "🤖",
-    items: ["n8n", "LangChain", "LangGraph", "CrewAI", "Voiceflow", "Google Gemini API", "AI Agents", "NL-to-SQL"],
+    items: ["n8n", "Lovable", "Notion", "Voiceflow", "Amplitude", "Granola", "AI Agents - Claude, Cursor, Gemini, OpenAI"],
   },
 ];
 
+
 // ─── ACHIEVEMENTS ────────────────────────────────────────────────────────────
 export const achievements = [
-  { title: "Winner — Anveshana Ideathon", desc: "AI Smart Wardrobe concept, BMSIT", icon: "🏆" },
-  { title: "Top Prize — EPOCH'24 Hackathon", desc: "WellFi — AI Companion for Yoga & Meditation", icon: "🥇" },
-  { title: "Featured in Bangalore Times", desc: "Times of India, Pg. 6 — Prorata Car", icon: "📰" },
-  { title: "Cleared Google APM Round 1", desc: "Advanced to 5-interview panel", icon: "🎯" },
+  { title: "Winner - Anveshana Ideathon", desc: "AI Smart Wardrobe concept, BMSIT", icon: "🏆" },
+  { title: "Top Prize - EPOCH'24 Hackathon", desc: "WellFi - AI Companion for Yoga & Meditation", icon: "🥇" },
+  { title: "Featured in Bangalore Times", desc: "Times of India, Pg. 6 - Prorata Car", icon: "📰" },
+  { title: "Cleared Google APM Rounds", desc: "Advanced to 5-interview panel", icon: "🎯" },
 ];
 
 // ─── ABOUT ───────────────────────────────────────────────────────────────────
 export const about = {
-  positioning: "I don't really like 'just managing products.' I like understanding how they work.",
+  positioning: "I like building products, but I'm more interested in figuring out what should be built, why it matters, and whether it actually works.",
   bio: [
-    "I'll look at a workflow and ask why five people are doing something manually. I'll look at a funnel and ask where the user actually drops. I'll look at an AI idea and ask whether it solves a real problem or is just a shiny demo.",
-    "And when I find something worth fixing, I build the smallest version that can prove it.",
-    "That's shaped most of my work — from AI automation at Zepto to assessment intelligence at Superset, and product experiments across mobility, commerce and SaaS.",
-    "My background is engineering. My work is product. And the intersection of the two is where I want to keep building.",
+    "My approach to product starts with the problem: understand the user, dig into the data, identify the real friction, and turn it into a clear product opportunity. From there, I work across product strategy, user research, prioritization, PRDs, experimentation, and execution to take ideas from 0→1 and improve products already in the hands of users.",
+    "That's shaped my experience across Zepto, Superset, and Unacademy, where I've worked on consumer experiences, AI products, hiring workflows, and product operations. Alongside my roles, I've independently built products across AI, mobility, commerce, and SaaS to explore problems end-to-end.",
+    "My background is engineering, but my experience has taken me through Sales → Marketing → Growth → GTM → Product Operations → Product. That gives me a broader view of how products are not just built, but positioned, adopted, operated, and grown.",
+    "I'm at my best when I can own a problem end-to-end: discover → define → prioritize → build → launch → measure → iterate.",
   ],
-  education: "B.E. Electrical & Electronics Engineering, BMSIT — 2022–2026",
+  education: "B.E. Electrical & Electronics Engineering, BMSIT - 2022-2026",
 };
 
 // ─── BLOG POSTS ──────────────────────────────────────────────────────────────
 export const blogPosts = [
   {
     title: "From watching the story to building inside it",
-    excerpt: "Back in 2021, when Zepto had just started, I remember watching the entire story unfold — two founders, YC, insane speed. And now I get to be part of that journey.",
+    excerpt: "Back in 2021, when Zepto had just started, I remember watching the entire story unfold - two founders, YC, insane speed. And now I get to be part of that journey.",
     reactions: 209,
     url: "https://www.linkedin.com/posts/aishwarye-jain-9535b4221_zepto-product-quickcommerce-activity-7465054144165339136-SdsM",
     tag: "Career",
